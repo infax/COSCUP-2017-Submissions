@@ -1,8 +1,8 @@
 body{
 	margin:0 0 0 0;
-	background-color: #fff;
+	background-color: #000000;
 	font-size:1em;
-	color:#00000;
+	color:#ffffff;
 	overflow:scroll;
 }
 .class_day{
@@ -27,15 +27,15 @@ body{
 }
 
 .class_title_day{
-	background-color:#ddd;
-	color:#000;
+	background-color:#333333;
+	color:#ffffff;
 	font-size:0.8em;
 	width:100%;
 }
 .class_title_room{
 	height:15px;
-	background-color:#ccc;
-	color:#000;
+	background-color:#333333;
+	color:#ffffff;
 	font-size:0.8em;
 	width:100%;
 }
@@ -47,8 +47,7 @@ body{
 }
 
 .class_sub{
-	background-color:#77DDFF;
+	background-color:#0000CC;
 	border-width:1px; border-style:solid;
-	border-color:#fff;
 	font-size:0.8em;
 }

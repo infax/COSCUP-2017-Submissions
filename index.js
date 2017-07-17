@@ -21,10 +21,7 @@ $(function(){
 			var time_end = date_end.getHours() * 60 + date_end.getMinutes() - day_start;
 			var time = padLeft(''+date_start.getHours(),2) + ':' + padLeft(''+date_start.getMinutes(),2);
 			time +='~'+ padLeft(''+date_end.getHours(),2) + ':' + padLeft(''+date_end.getMinutes(),2);
-			//$('body').append( ' ---------day:' + day + '<br>' );
-			//$('body').append( ' ---------time_start:' + time_start + '<br>' );
-			//$('body').append( ' ---------time_end:' + time_end + '<br>' );
-			
+
 			
 			if(room_submission[day] == undefined)room_submission[day] = new Object();
 			if(room_submission[day][d['room']] == undefined)room_submission[day][d['room']] = new Object();
@@ -58,7 +55,7 @@ $(function(){
 			$.each( d_room , function (v_room , d_sub){
 				$('#div_day_'+v_day).append('<div class="class_room" ref="'+v_room+'" id="div_day_'+v_day+'_room_'+v_room+'"><div class="class_title_room">'+v_room+'</div></div>');
 				$.each( d_sub , function (v , d){
-					$('#div_day_'+v_day+'_room_'+v_room).append('<div class="class_sub" ref="'+v+'" id="div_day_'+v_day+'_room_'+v_room+'_sub_'+v+'" ref_start="'+d['time_start']+'" ref_end="'+d['time_end']+'">'+d['time']+'<br>'+d['subject']+'</div>'); //+v+''+d['subject'] //+d['subject']+'<br>'
+					$('#div_day_'+v_day+'_room_'+v_room).append('<div class="class_sub" ref="'+v+'" id="div_day_'+v_day+'_room_'+v_room+'_sub_'+v+'" ref_start="'+d['time_start']+'" ref_end="'+d['time_end']+'">'+d['time']+'<br>'+d['subject']+'<br>['+d['speaker']+']</div>'); //+v+''+d['subject'] //+d['subject']+'<br>'
 				});	
 			});
 			
