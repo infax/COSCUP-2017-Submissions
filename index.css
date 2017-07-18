@@ -5,6 +5,9 @@ body{
 	color:#ffffff;
 	overflow:scroll;
 }
+a:link , a:visited{
+	color:#ffffff;
+}
 .class_day{
 	text-align:center;
 	width:99%;
