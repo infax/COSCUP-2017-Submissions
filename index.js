@@ -56,7 +56,35 @@ $(function(){
 			if(room_submission[day] == undefined)room_submission[day] = new Object();
 			if(room_submission[day][d['room']] == undefined)room_submission[day][d['room']] = new Object();
 			//重新定義一個Object 存放解完的資料
+			
+			var index_community=0; //把community給一個index 值方便放入css
+			switch(d['community'].trim()){
+				case '':														index_community=0;break;
+				case 'Workflaws and Workflows in Hacking, Hackers 的盲腸與日常':	index_community=1;break;
+				case 'Open Source Farm Innovation 農業 x 科技 x 開源':				index_community=2;break;
+				case 'Open Source Database':									index_community=3;break;
+				case 'Rust':													index_community=4;break;
+				case 'Desktop Software 桌面應用軟體':								index_community=5;break;
+				case 'Open Web Technologies':									index_community=6;break;
+				case 'Android 大亂鬥':											index_community=7;break;
+				case 'Open Document Format 開放文件格式':							index_community=8;break;
+				case 'Chinese 中文':												index_community=9;break;
+				case 'The Art of Conducting Open Community 開放社群經營藝術':		index_community=10;break;
+				case 'WordPress網站開發大小事':									index_community=11;break;
+				case 'Linux Kernel & System & Coders':							index_community=12;break;
+				case 'Emacs (intro “Emacs”)':									index_community=13;break;
+				case 'Ethereum (Blockchain)':									index_community=14;break;
+				case 'openSUSE':												index_community=15;break;
+				case 'Kaggle 101 - Data Science On-The-Go':						index_community=16;break;
+				case 'OpenStreetMap 開放街圖':									index_community=17;break;
+				case 'OpenStack / Virtualization':								index_community=18;break;
+				case '“Go Go Power Ranger” 大夥兒一起來Golang':					index_community=19;break;
+				case 'Ubuntu Core & Snappy':									index_community=20;break;
+				case 'DevOps Workshop':											index_community=21;break;
+				case 'Angular Workshop':										index_community=22;break;
+			}
 			room_submission[day][d['room']][v]=new Object({	'community':d['community'],
+													'index_community':index_community,
 													'subject':d['subject'],
 													'summary':d['summary'],
 													'time':time,
@@ -66,11 +94,12 @@ $(function(){
 													'time_start':time_start,
 													'time_end':time_end
 												});
+			console.log(index_community+'   '+d['community']);
 		});
 		
 		$.each( room_submission , function (v_day , d_room){
 			//放置議程日期的空間
-			$('body').append('<div class="class_day" ref="'+v_day+'" id="div_day_'+v_day+'"><div class="class_title_day">'+v_day+'</div><div class="class_times" id="div_tims_'+v_day+'"></div></div>');
+			$('body').append('<div class="class_day" ref="'+v_day+'" id="div_day_'+v_day+'"><div class="class_title_day">'+v_day+'日</div><div class="class_times" id="div_tims_'+v_day+'"></div></div>');
 
 			//產生時間軸
 			for(var i=8;i<17;i++){
@@ -81,10 +110,10 @@ $(function(){
 			
 			//放置議程空間
 			$.each( d_room , function (v_room , d_sub){
-				$('#div_day_'+v_day).append('<div class="class_room" ref="'+v_room+'" id="div_day_'+v_day+'_room_'+v_room+'"><div class="class_title_room">'+v_room+'</div></div>');
+				$('#div_day_'+v_day).append('<div class="class_room" ref="'+v_room+'" id="div_day_'+v_day+'_room_'+v_room+'"><div class="class_title_room">Room '+v_room+'</div></div>');
 				//放置議程資料
 				$.each( d_sub , function (v , d){
-					$('#div_day_'+v_day+'_room_'+v_room).append('<div class="class_sub" ref="'+v+'" id="div_day_'+v_day+'_room_'+v_room+'_sub_'+v+'" ref_start="'+d['time_start']+'" ref_end="'+d['time_end']+'" title="'+d['subject']+'\n['+d['speaker']+']">'+d['time']+'<br>'+d['subject']+'</div>'); //+v+''+d['subject'] //+d['subject']+'<br>'
+					$('#div_day_'+v_day+'_room_'+v_room).append('<div class="class_sub class_community_'+d['index_community']+'" ref="'+v+'" id="div_day_'+v_day+'_room_'+v_room+'_sub_'+v+'" ref_start="'+d['time_start']+'" ref_end="'+d['time_end']+'" title="'+d['time']+'\n'+d['subject']+'\n['+d['speaker']+']">'+d['time']+'<br>'+d['subject']+'</div>'); //+v+''+d['subject'] //+d['subject']+'<br>'
 				});	
 			});
 			
@@ -126,11 +155,13 @@ function renew_time_now_bar(){
 		var hr=now.getHours();
 		var min=now.getMinutes();
 		var sec=now.getSeconds();
-		$('.class_time_now').each(function(){
-			var nowobj_position=$(this).parent().find('.class_times_hr[ref="'+hr+'"]').position();
-			$(this).html(padLeft(hr+'',2)+':'+padLeft(min+'',2)+':'+padLeft(sec+'',2));
-			$(this).css({ top: ((nowobj_position.top+min*2)-1)+'px' });
-		});
+		if(hr>=8 && hr<18){
+			$('.class_time_now').each(function(){
+				var nowobj_position=$(this).parent().find('.class_times_hr[ref="'+hr+'"]').position();
+				$(this).html(padLeft(hr+'',2)+':'+padLeft(min+'',2)+':'+padLeft(sec+'',2));
+				$(this).css({ top: ((nowobj_position.top+min*2)-1)+'px' });
+			});
+		}
 		renew_time_now_bar();
 	},1000);
 }
