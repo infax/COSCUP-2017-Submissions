@@ -74,19 +74,21 @@ $(function(){
 
 			//產生時間軸
 			for(var i=8;i<17;i++){
-				$('#div_tims_'+v_day+'').append('<div class="class_times_hr">'+i+':00</div>');
+				$('#div_tims_'+v_day+'').append('<div class="class_times_hr" ref="'+i+'">'+i+':00</div>');
 			}
+			//放置目前時間
+			$('#div_tims_'+v_day+'').append('<div class="class_time_now"></div>');
 			
 			//放置議程空間
 			$.each( d_room , function (v_room , d_sub){
 				$('#div_day_'+v_day).append('<div class="class_room" ref="'+v_room+'" id="div_day_'+v_day+'_room_'+v_room+'"><div class="class_title_room">'+v_room+'</div></div>');
 				//放置議程資料
 				$.each( d_sub , function (v , d){
-					$('#div_day_'+v_day+'_room_'+v_room).append('<div class="class_sub" ref="'+v+'" id="div_day_'+v_day+'_room_'+v_room+'_sub_'+v+'" ref_start="'+d['time_start']+'" ref_end="'+d['time_end']+'" title="['+d['speaker']+']">'+d['time']+'<br>'+d['subject']+'</div>'); //+v+''+d['subject'] //+d['subject']+'<br>'
+					$('#div_day_'+v_day+'_room_'+v_room).append('<div class="class_sub" ref="'+v+'" id="div_day_'+v_day+'_room_'+v_room+'_sub_'+v+'" ref_start="'+d['time_start']+'" ref_end="'+d['time_end']+'" title="'+d['subject']+'\n['+d['speaker']+']">'+d['time']+'<br>'+d['subject']+'</div>'); //+v+''+d['subject'] //+d['subject']+'<br>'
 				});	
 			});
 			
-			var w=$(document).width(); //取得顯示的空間寬
+			var w=$(window).width(); //取得顯示的空間寬
 			w-=$('.class_times').width(); //減掉時間軸的寬度
 			$('.class_day').each(function(v,d){ //將議程空間的寬度以等比例分配
 				var count_rooms=$(this).find('.class_room').length;
@@ -113,9 +115,25 @@ $(function(){
 			});
 			$('body').append('<br>');
 		});
+		
+		renew_time_now_bar();
 	});
 
 });
+function renew_time_now_bar(){
+	setTimeout(function() {
+		var now=new Date();
+		var hr=now.getHours();
+		var min=now.getMinutes();
+		var sec=now.getSeconds();
+		$('.class_time_now').each(function(){
+			var nowobj_position=$(this).parent().find('.class_times_hr[ref="'+hr+'"]').position();
+			$(this).html(padLeft(hr+'',2)+':'+padLeft(min+'',2)+':'+padLeft(sec+'',2));
+			$(this).css({ top: ((nowobj_position.top+min*2)-1)+'px' });
+		});
+		renew_time_now_bar();
+	},1000);
+}
 function padLeft(str,lenght){
     if(str.length >= lenght)
         return str;
