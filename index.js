@@ -117,13 +117,7 @@ $(function(){
 				});	
 			});
 			
-			var w=$(window).width(); //取得顯示的空間寬
-			w-=$('.class_times').width(); //減掉時間軸的寬度
-			$('.class_day').each(function(v,d){ //將議程空間的寬度以等比例分配
-				var count_rooms=$(this).find('.class_room').length;
-				var width_init=w/count_rooms -6;
-				$(this).find('.class_room').css({'width':width_init+'px'});
-			});
+			resize_room_area();
 			
 			$('.class_room').each(function(){ //設定每個議程的顯示位置與時間(也就是從幾點開始到幾點)
 				var last_tims=0; //上一場議程的結速時間
@@ -147,8 +141,19 @@ $(function(){
 		
 		renew_time_now_bar();
 	});
-
+	$(window).resize(function(){
+		resize_room_area();
+	});
 });
+function resize_room_area(){
+	var w=$(window).width(); //取得顯示的空間寬
+	w-=$('.class_times').width(); //減掉時間軸的寬度
+	$('.class_day').each(function(v,d){ //將議程空間的寬度以等比例分配
+		var count_rooms=$(this).find('.class_room').length;
+		var width_init=w/count_rooms -count_rooms; //減去空間數(邊線的寬度)
+		$(this).find('.class_room').css({'width':width_init+'px'});
+	});
+}
 function renew_time_now_bar(){
 	setTimeout(function() {
 		var now=new Date();
