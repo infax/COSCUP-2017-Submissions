@@ -1,115 +1,139 @@
-body{
-	margin:0 0 0 0;
+body {
+	margin: 0 0 0 0;
 	background-color: #000000;
-	font-size:1em;
-	color:#ffffff;
-	
+	font-size: 1em;
+	color: #ffffff;
 }
-a:link , a:visited{
-	color:#ffffff;
+
+a:link , a:visited {
+  color: #ffffff;
 }
-.class_day{
-	text-align:center;
-	width:99%;
+
+.class_day {
+	text-align: center;
+	width: 99%;
 	
 	/*border-width:1px; border-style:solid;*/
-	overflow:hidden;
-}
-.class_times{
-	float:left; 
-	
-	width:50px;
-	margin-top:17px;
-	
-	
-}
-.class_times_hr{
-	height:119px;
-	border-width:1px;
-	border-bottom-style:dotted;
-}
-.class_time_now{
-	position:absolute;
-	width:100%;
-	height:10px;
-	border-width:2px;
-	border-top-style:dotted;
-	border-color:#FF8888;
-	text-align:left;
-	font-size:0.8em;
-	color:#99FF99;
-}
-.class_title_day{
-	background-color:#333333;
-	color:#ffffff;
-	font-size:0.8em;
-	width:100%;
-}
-.class_title_room{
-	height:15px;
-	background-color:#333333;
-	color:#ffffff;
-	font-size:0.8em;
-	width:100%;
+	overflow: hidden;
 }
 
-.class_room{
+.class_times {
+	float: left; 
+	width: 50px;
+	margin-top: 17px;
+}
+
+.class_times_hr {
+	height: 119px;
+	border-width: 1px;
+	border-bottom-style: dotted;
+}
+
+.class_time_now {
+	position: absolute;
+	width: 100%;
+	height: 10px;
+	border-width: 2px;
+	border-top-style: dotted;
+	border-color: #FF8888;
+	text-align: left;
+	font-size: 0.8em;
+	color: #99FF99;
+}
+
+.class_title_day {
+	background-color: #333333;
+	color: #ffffff;
+	font-size: 0.8em;
+	width: 100%;
+}
+
+.class_title_room {
+	height: 15px;
+	background-color: #333333;
+	color: #ffffff;
+	font-size: 0.8em;
+	width: 100%;
+}
+
+.class_room {
 	margin: 1px 1px 1px 1px;
-	border-width:1px; border-style:solid;
-	float:left; 
+	border-width: 1px; border-style:solid;
+	float: left; 
 }
 
-.class_sub{
-	background-color:#0000CC;
-	border-width:1px; border-style:solid;
-	font-size:0.8em;
-	overflow:hidden;
+.class_sub {
+	background-color: #5f5e5f;
+	border-width: 1px; border-style:solid;
+	font-size: 0.8em;
+	overflow: hidden;
 }
 
-.class_community_0 {	/**/
-	
-}														
-.class_community_1 {	/*Workflaws and Workflows in Hacking, Hackers 的盲腸與日常*/
-}	
-.class_community_2 {	/*Open Source Farm Innovation 農業 x 科技 x 開源*/
-}				
-.class_community_3 {	/*Open Source Database*/
-}									
-.class_community_4 {	/*Rust*/
-}													
-.class_community_5 {	/*Desktop Software 桌面應用軟體*/
-}								
-.class_community_6 {	/*Open Web Technologies*/
-}									
-.class_community_7 {	/*Android 大亂鬥*/
-}											
-.class_community_8 {	/*Open Document Format 開放文件格式*/
-}							
-.class_community_9 {	/*Chinese 中文*/
-}												
-.class_community_10{	/*The Art of Conducting Open Community 開放社群經營藝術*/
-}		
-.class_community_11{	/*WordPress網站開發大小事*/
-}									
-.class_community_12{	/*Linux Kernel & System & Coders*/
-}							
-.class_community_13{	/*Emacs (intro “Emacs”)*/
-}									
-.class_community_14{	/*Ethereum (Blockchain)*/
-}									
-.class_community_15{	/*openSUSE*/
-}												
-.class_community_16{	/*Kaggle 101 - Data Science On-The-Go*/
-}						
-.class_community_17{	/*OpenStreetMap 開放街圖*/
-}									
-.class_community_18{	/*OpenStack / Virtualization*/
-}								
-.class_community_19{	/*“Go Go Power Ranger” 大夥兒一起來Golang*/
-}					
-.class_community_20{	/*Ubuntu Core & Snappy*/
-}									
-.class_community_21{	/*DevOps Workshop*/
-}											
-.class_community_22{	/*Angular Workshop*/
-}										
+.class_community_0 {	/*  */
+}
+
+.class_community_1 {	/* Workflaws and Workflows in Hacking, Hackers 的盲腸與日常 */
+}
+
+.class_community_2 {	/* Open Source Farm Innovation 農業 x 科技 x 開源 */
+}
+
+.class_community_3 {	/* Open Source Database */
+}
+
+.class_community_4 {	/* Rust */
+}
+
+.class_community_5 {	/* Desktop Software 桌面應用軟體 */
+}
+
+.class_community_6 {	/* Open Web Technologies */
+}
+
+.class_community_7 {	/* Android 大亂鬥 */
+}
+
+.class_community_8 {	/* Open Document Format 開放文件格式 */
+}
+
+.class_community_9 {	/* Chinese 中文 */
+}
+
+.class_community_10{	/* The Art of Conducting Open Community 開放社群經營藝術 */
+}
+
+.class_community_11{	/* WordPress網站開發大小事 */
+}
+
+.class_community_12{	/* Linux Kernel & System & Coders */
+}
+
+.class_community_13{	/* Emacs (intro "Emacs") */
+}
+
+.class_community_14{	/* Ethereum (Blockchain) */
+}
+
+.class_community_15{	/* openSUSE */
+}
+
+.class_community_16{	/* Kaggle 101 - Data Science On-The-Go */
+}
+
+.class_community_17{	/* OpenStreetMap 開放街圖 */
+}
+
+.class_community_18{	/* OpenStack / Virtualization */
+}
+
+.class_community_19{	/* "Go Go Power Ranger" 大夥兒一起來Golang */
+}
+
+.class_community_20{	/* Ubuntu Core & Snappy */
+}
+
+.class_community_21{	/* DevOps Workshop */
+}
+
+.class_community_22{	/* Angular Workshop */
+}
